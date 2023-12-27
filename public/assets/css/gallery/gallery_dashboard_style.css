@@ -1,0 +1,36 @@
+:root {
+    --lato: "Lato", sans-serif;
+    --light: #f4f4f4;
+    --grey: #e7e5e5;
+    --darK: #000;
+    --blue: rgb(0, 119, 255);
+    --red: rgb(255, 107, 87);
+    --light-blue: rgb(205, 227, 253);
+    --light-yellow: rgb(250, 250, 203);
+    --light-orange: rgb(255, 241, 215);
+    --orange: orange;
+    --yellow: rgb(230, 230, 2);
+}
+
+body {
+    background: var(--grey);
+}
+
+/* CONTENT */
+.content {
+    position: relative;
+    width: calc(100% - 260px);
+    left: 260px;
+    transition: 0.3s ease;
+}
+.sidebar.hide ~ .content {
+    width: calc(100% - 60px);
+    left: 60px;
+}
+/* CONTENT */
+
+@media screen and (max-width: 768px) {
+    .content {
+        width: calc(100% -60px);
+    }
+}

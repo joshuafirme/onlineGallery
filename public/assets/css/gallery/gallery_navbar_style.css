@@ -1,0 +1,32 @@
+/* NAVBAR */
+.content .navbar {
+    height: 50px;
+    background: var(--light);
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    font-family: var(--lato);
+}
+.content .navbar::before {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    bottom: -40px;
+    left: 0;
+    border-radius: 50%;
+    box-shadow: -20px -20px 0 var(--light);
+}
+.content .navbar .bi.bi-list {
+    font-size: 22px;
+    cursor: pointer;
+    color: var(--darK);
+}
+/* NAVBAR */
+
+@media screen and (max-width: 425px) {
+    .content .navbar .bi.bi-list {
+        display: none;
+    }
+}
+

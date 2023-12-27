@@ -1,0 +1,119 @@
+.image-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.vignette-filter {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(0, 0, 0, 0) 50%,
+        rgba(0, 0, 0, 0.6) 70%,
+        rgba(0, 0, 0, 0.8) 100%
+    );
+    filter: brightness(75%) contrast(140%);
+}
+
+.eventTitle {
+    margin-top: 45px;
+    margin-bottom: 45px;
+    text-align: center;
+    color: rgb(158, 37, 0);
+    font-family: "Montserrat", sans-serif;
+}
+
+.congrats {
+    font-weight: bold;
+    font-family: "Sacramento", cursive;
+    font-size: 60px;
+}
+
+#see-pricing {
+    border-radius: 100px;
+    width: 250px;
+    background: rgb(158, 37, 0);
+    color: white;
+    font-size: 27px;
+    padding: 10px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#see-pricing:hover {
+    background-color: #db3518; /* Change the color on hover */
+}
+
+.banner {
+    width: 100%;
+    display: flex;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.banner-text {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    justify-content: center; /* Center content vertically */
+    float: right;
+}
+
+.banner-text h2 {
+    font-weight: bold;
+}
+
+.banner-text p {
+    font-size: 20px;
+    line-height: 1.5;
+    white-space: pre-line;
+    text-align: justify;
+    margin-top: 20px;
+}
+
+.banner-img-left,
+.banner-img-right {
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-img-left img,
+.banner-img-right img {
+    width: 100%;
+    display: block;
+    border-radius: 60px;
+}
+
+.banner-img-left img {
+    clip-path: polygon(0% 0%, 100% 0%, 60% 100%, 0% 100%);
+    background: linear-gradient(to bottom, transparent 80%, white 80%);
+}
+
+.banner-img-right img {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 40% 100%);
+    background: linear-gradient(to bottom, transparent 80%, white 80%);
+}
+
+@media (max-width: 768px) {
+    .banner {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .banner-text {
+        max-width: 100%;
+        text-align: center;
+        float: none;
+    }
+
+    .banner-img-left,
+    .banner-img-right {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .banner-img-left img,
+    .banner-img-right img {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
+}

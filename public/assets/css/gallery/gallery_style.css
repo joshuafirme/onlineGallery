@@ -1,0 +1,549 @@
+/* Gallery */
+.gallery-item img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    display: inline-block;
+}
+.gallery-item > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.gallery-item > div > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.gallery-item > div > video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.gallery-item {
+    display: grid;
+    grid-gap: 12px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-auto-rows: 200px;
+    grid-auto-flow: dense;
+}
+.wide {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+.tall {
+    grid-row: span 2;
+    grid-column: span 1;
+}
+.big {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+/* Upload Button */
+#container {
+    text-align: center;
+    margin: auto;
+}
+.modal-header h1 {
+    font-weight: 500;
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    color: #707ea0;
+    margin: 0px;
+    margin-bottom: 8px;
+}
+.drop-section {
+    min-height: 250px;
+    border: 1px dashed #a8b3e3;
+    background-image: linear-gradient(189deg, white, #f1f6ff);
+    margin: 5px 35px 35px 35px;
+    border-radius: 12px;
+    position: relative;
+    color: #a8b3e3;
+    font-size: 20px;
+    font-weight: 500;
+}
+.drop-section div.col:first-child {
+    opacity: 1;
+    visibility: visible;
+    transition-duration: 0.2s;
+    transform: scale(1);
+    min-width: 700px;
+    margin: auto;
+}
+.drop-section div.col:last-child {
+    font-size: 40px;
+    font-weight: 700;
+    color: #c0cae1;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    width: 200px;
+    height: 55px;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.6);
+    transition-duration: 0.2s;
+}
+.drag-over-effect div.col:first-child {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: scale(1.1);
+}
+.drag-over-effect div.col:last-child {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.drop-section .cloud-icon {
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+.drop-section .cloud-icon .bi-cloud-upload-fill {
+    color: #5874c6;
+    font-size: 150px;
+}
+.drop-section span,
+.drop-section button {
+    display: block;
+    margin: auto;
+    color: #707ea0;
+    margin-bottom: 10px;
+}
+.drop-section button {
+    color: white;
+    background-color: #5874c6;
+    border: none;
+    outline: none;
+    padding: 7px 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+        rgba(0, 0, 0, 0.3) 0px 8px 16px -10px;
+}
+.drop-section input {
+    display: none;
+}
+
+.list-section {
+    text-align: left;
+    margin: 0px 35px;
+    padding-bottom: 20px;
+    display: none;
+}
+.list-section .list-title {
+    font-size: 0.95rem;
+    color: #707ea0;
+}
+
+.list-section li {
+    display: flex;
+    margin: 15px 0px;
+    padding-top: 4px;
+    padding-bottom: 2px;
+    border-radius: 8px;
+    transition-duration: 0.2s;
+}
+.list-section li:hover {
+    box-shadow: #e3eaf9 0px 0px 4px 0px, #e3eaf9 0px 12px 16px 0px;
+}
+.list-section li .col {
+    flex: 0.1;
+}
+.list-section li .col img {
+    height: 50px;
+    width: 50px;
+}
+.list-section li .col:nth-child(1) {
+    flex: 0.15;
+    text-align: center;
+}
+.list-section li .col:nth-child(2) {
+    flex: 0.75;
+    text-align: left;
+    font-size: 0.9rem;
+    color: #3e4046;
+    padding: 8px 10px;
+}
+.list-section li .col:nth-child(2) div.name {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 250px;
+    display: inline-block;
+}
+.list-section li .col .file-name span {
+    color: #707ea0;
+    float: right;
+}
+.list-section li .file-progress {
+    width: 100%;
+    height: 5px;
+    margin-top: 8px;
+    border-radius: 8px;
+    background-color: #dee6fd;
+}
+.list-section li .file-progress span {
+    display: block;
+    width: 0%;
+    height: 100%;
+    border-radius: 8px;
+    background-image: linear-gradient(120deg, #6b99fd, #3985ff);
+    transition-duration: 0.4s;
+}
+.list-section li .col .file-size {
+    font-size: 0.75rem;
+    margin-top: 3px;
+    color: #707ea0;
+}
+.list-section li .col svg.cross,
+.list-section li .col svg.check {
+    fill: #8694d2;
+    background-color: #dee6fd;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    margin-bottom: 5px;
+}
+.list-section li .col svg.check {
+    fill: #50a156;
+    background-color: transparent;
+}
+.list-section li.complete span,
+.list-section li.complete .file-progress,
+.list-section li.complete svg.cross {
+    display: none;
+}
+.list-section li.in-prog .file-size,
+.list-section li.in-prog svg.check {
+    display: none;
+}
+
+.wrapper {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+.download-link i {
+    margin-right: 5px;
+}
+.wrapper:hover .download-link {
+    display: block; /* show on hover */
+}
+
+.wrapper:hover .view-link {
+    display: block; /* show on hover */
+}
+
+.wrapper:hover .delete-button {
+    display: block; /* show on hover */
+}
+
+@media (max-width: 993px) {
+    .drop-section div.col:first-child {
+        min-width: 100%; /* Adjust as needed for responsiveness */
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+/* Upload Button */
+
+.delete-button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: transparent;
+    opacity: 80%;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 25px;
+    display: none; /* initially hidden */
+    opacity: 0.5;
+}
+
+.delete-button:hover {
+    display: flex;
+    opacity: 1;
+    transition-delay: 0.2s; /* Delay the transition by 0.5 seconds */
+}
+
+.download-link {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 8px; /* Adjust the margin as needed for spacing */
+    color: #fff; /* Set the color of the download link */
+    text-decoration: none;
+    background-color: transparent; /* Semi-transparent black background */
+    padding: 4px 11px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    display: none; /* initially hidden */
+    opacity: 0.5;
+}
+
+.download-link:hover {
+    display: flex;
+    opacity: 1;
+    transition-delay: 0.2s; /* Delay the transition by 0.5 seconds */
+}
+
+.view-link {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff; /* Set the color of the view link */
+    text-decoration: none;
+    background-color: transparent; /* Semi-transparent black background */
+    padding: 4px 11px;
+    border-radius: 4px;
+    font-size: 35px; /* Adjust the font size as needed */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    opacity: 0; /* Initially set opacity to 0 */
+    cursor: pointer; /* Add pointer cursor for better UX */
+    text-transform: uppercase;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900;
+    z-index: 100;
+}
+
+.view-link:hover {
+    display: flex;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+    transition-delay: 0.1s; /* Delay the transition by 0.5 seconds */
+}
+
+.view-link:hover + .image {
+    filter: blur(5px); /* Adjust the blur intensity as needed */
+}
+
+#myModal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+}
+
+#myVideoModal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+}
+
+#mediaContainer {
+    width: auto;
+    height: auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000; /* Ensure it's on top of other content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#imageContainer {
+    width: auto;
+    height: auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000; /* Ensure it's on top of other content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#videoContainer {
+    width: auto;
+    height: auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000; /* Ensure it's on top of other content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#modalImage {
+    height: auto;
+    width: auto;
+    max-height: 100vh; /* Ensure the image doesn't exceed the viewport height */
+    max-width: 100%; /* Ensure the image doesn't exceed the viewport width */
+    object-fit: contain; /* Maintain aspect ratio and cover the container */
+}
+
+#modalVideo {
+    height: auto;
+    width: auto;
+    max-height: 100vh; /* Ensure the image doesn't exceed the viewport height */
+    max-width: 100%; /* Ensure the image doesn't exceed the viewport width */
+    object-fit: contain; /* Maintain aspect ratio and cover the container */
+}
+
+/* Close button style */
+.close {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    color: #fff;
+    font-size: 24px; /* Adjust font size */
+    cursor: pointer;
+    z-index: 1000;
+}
+
+input[type="checkbox"] {
+    position: absolute;
+    top: 10px; /* Adjust the top position as needed */
+    left: 10px; /* Adjust the left position as needed */
+    z-index: 200; /* Set a value higher than other elements in the wrapper */
+    width: 20px;
+    height: 20px;
+}
+
+@media (min-width: 769px) {
+    #modalImage {
+        width: 100%;
+        height: auto; /* Adjust the height as needed */
+    }
+    #mediaContainer {
+        width: 90%;
+        height: auto;
+        background: none;
+    }
+    #imageContainer {
+        width: 90%;
+        height: auto;
+        background: none;
+    }
+}
+
+@media (max-width: 768px) {
+    #modalImage {
+        width: 100%;
+        height: auto; /* Adjust the height as needed */
+    }
+    #mediaContainer {
+        width: 90%;
+        height: auto;
+        background: none;
+    }
+    #imageContainer {
+        width: 90%;
+        height: auto;
+        background: none;
+    }
+}
+
+/* Gallery */
+
+/* Carousel */
+#carouselExampleControls {
+    position: relative;
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 500;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#playButton {
+    font-size: 100px; /* Adjust the font size to make it larger */
+    color: rgb(168, 168, 168); /* Set the color to gray */
+    background-color: transparent; /* Optional: Add a white background for better visibility */
+    border: none; /* Optional: Remove border for a cleaner look */
+}
+#playButton:hover {
+    color: rgb(228, 227, 227); /* Set the color to gray */
+}
+
+#carouselExampleControls:hover .play-button {
+    opacity: 1;
+}
+
+.fullscreen-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 500; /* Higher z-index than other elements */
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Carousel */
+
+#whiteBG {
+    position: fixed;
+    bottom: 0%;
+    left: 55%;
+    transform: translateX(-50%);
+    width: 50%;
+    background-color: white; /* Add a white background */
+    padding: 10px; /* Add padding for better visibility */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    transition: width 0.3s ease;
+    z-index: 1500;
+}
+
+#submitBtn {
+    display: block;
+    margin: auto;
+    width: 50%;
+    transition: width 0.3s ease;
+}
+#submitBtn:hover {
+    width: 60%; /* Adjust as needed */
+}

@@ -1,0 +1,31 @@
+#freeTrial {
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    font-size: 1em;
+    color: #333; /* Change color as needed */
+    transition: transform 0.3s ease-in-out;
+    text-decoration: underline;
+}
+
+#freeTrial:hover {
+    transform: scale(1.03);
+}
+
+#freeTrial i {
+    margin-left: 5px; /* Adjust spacing between text and arrow icon as needed */
+}
+
+#howItWorks{
+    border-radius: 100px;
+    width: 180px;
+    background: rgb(158, 37, 0);
+    color: white;
+    font-size: 13px;
+    padding: 10px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#howItWorks:hover {
+    background-color: #d83417; /* Change the color on hover */
+}
