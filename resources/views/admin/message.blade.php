@@ -1,80 +1,72 @@
-@extends('layouts.adminbase')
+@php
+    $title = 'Messages';
+@endphp
+@section('title', $title)
 
-@section('title')
-    Website Title | Messages
-@endsection
+@include('admin.components.head')
+@include('admin.components.sidenav')
+@include('admin.components.topnav')
 
-@section('content')
-    <main>
-        <div class="table-data">
-            <div class="order">
-                <div class="head">
-                    <h3>Messages</h3>
+
+<main class="content">
+    <div class="container-fluid p-0">
+        <h1 class="h3 mb-3">{{ $title }}</h1>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        @include('admin.components.alerts')
+
+                        <div class="row">
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Message</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (count($message) > 0)
+                                        @foreach ($message as $messages)
+                                            <tr>
+                                                <td>{{ $messages->id }}</td>
+                                                <td>{{ Str::limit($messages->message, 30) }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($messages->created_at)->format('F j, Y') }}
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @else
+                                        <tr>
+                                            <td colspan="22">
+                                                <div class="alert alert-primary alert-dismissible" role="alert">
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                        aria-label="Close"></button>
+                                                    <div class="alert-message">
+                                                        No data found.
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endif
+                                </tbody>
+                            </table>
+                        </div>
+                        @php
+                            echo $message->links('pagination::bootstrap-4');
+                        @endphp
+                    </div>
                 </div>
-                <table class="table-striped table-sm">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Message</th>
-                            <th>Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($message as $messages)
-                            <tr>
-                                <td>{{ $messages->id }}.)</td>
-                                <td>{{ Str::limit($messages->message, 30) }}</td>
-                                <td>{{ \Carbon\Carbon::parse($messages->created_at)->format('F j, Y') }}</td>
-                                <!-- Button to trigger the modal -->
-                                <td>
-                                    <button class="btn btn-primary" type="button" data-toggle="modal"
-                                        data-target="#exampleModal{{ $messages->id }}">
-                                        View <i class="bi bi-chat-left-dots"></i> 
-                                    </button>
-                                </td>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModal{{ $messages->id }}" tabindex="-1" role="dialog"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Message #{{ $messages->id }}
-                                                </h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body" style="white-space: pre-line">
-                                                {{ $messages->message }}
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <td>
-                                    <form method="POST" action="{{ route('delete-message', $messages->id) }}"
-                                        onsubmit="return confirm('Are you sure you want to delete this message?')">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger">
-                                            DELETE <i class="bi bi-trash"></i> 
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
             </div>
         </div>
-    </main>
-@endsection
 
-@section('scripts')
-@endsection
+    </div>
+</main>
+
+@include('admin.components.foot')
+
+<script src="{{ asset('libs/js/shared/script.js') }}"></script>

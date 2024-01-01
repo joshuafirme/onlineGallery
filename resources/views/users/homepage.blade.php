@@ -142,7 +142,7 @@
             </div>
         </div>
     </header>
-    @include('components.error_success_flash_message')
+    @include('admin.components.error_success_flash_message')
 
     <div class="container">
         <div class="row">

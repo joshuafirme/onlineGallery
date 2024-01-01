@@ -1,73 +1,87 @@
-@extends('layouts.base')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('title')
-    Make It Memories | Login
-@endsection
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-@section('content')
-    <style>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-        
-        .containerLogin {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 69.4vh;
-        }
+    <title>Sign In | Dartek PH</title>
 
-        .containerLogin form {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-        }
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-        label {
-            display: block;
-            margin-bottom: 8px;
-        }
+    <!-- Choose your prefered color scheme -->
+    <!-- <link href="css/light.css" rel="stylesheet"> -->
+    <!-- <link href="css/dark.css" rel="stylesheet"> -->
 
-        input {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 16px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+    <!-- BEGIN SETTINGS -->
+    <!-- Remove this after purchasing -->
+    <link class="js-stylesheet" href="{{ asset('libs/css/light.css') }}" rel="stylesheet">
 
-        button {
-            background-color: #4caf50;
-            color: #fff;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
+    <!-- END SETTINGS -->
+</head>
+<!--
+  HOW TO USE:
+  data-theme: default (default), dark, light, colored
+  data-layout: fluid (default), boxed
+  data-sidebar-position: left (default), right
+  data-sidebar-layout: default (default), compact
+-->
 
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
+<body data-theme="light" data-layout="fluid" data-sidebar-position="left" data-sidebar-layout="default">
+    <main class="d-flex w-100 h-100">
+        <div class="container d-flex flex-column">
+            <div class="row vh-100">
+                <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 mx-auto d-table h-100">
+                    <div class="d-table-cell align-middle">
 
-    @include('components.error_success_flash_message')
+                        <div class="text-center mt-4">
+                            <img width="200px" src="{{ asset('assets/images/icons/LOGO3.png') }}" class="mb-1">
+                        </div>
 
-    <div class="containerLogin">
-        <form action="/login/process" method="POST">
-            @csrf
-            <label for="name">Username</label>
-            <input type="text" name="name">
-            <label for="name">Password</label>
-            <input type="password" name="password">
-            <button type="submit"> Sign in</button>
-        </form>
-    </div>
-@endsection
+                        <div class="card">
+                            <div class="card-body">
+                                <p class="lead text-center">
+                                    Sign in to your account to continue
+                                </p>
+                                <div class="m-sm-3">
 
-@section('scripts')
-@endsection
+                                    <form action="{{ url('/do-login') }}" method="POST" autocomplete="off">
+                                        @csrf
+                                        <div class="mb-3">
+                                            <label class="form-label">Email</label>
+                                            <input class="form-control form-control-lg" type="email" name="email"
+                                                placeholder="Enter your email" value="admin@dartek.com" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Password</label>
+                                            <input class="form-control form-control-lg" type="password" name="password"
+                                                placeholder="Enter your password" />
+                                        </div>
+                                        @if (request()->unauth)
+                                            <div class="mb-4">
+                                                <small class="text-danger"><strong>These credentials do not match our
+                                                        records.</strong></small>
+                                            </div>
+                                        @endif
+                                        <div class="d-grid gap-2 mt-4">
+                                            <button class="btn btn-lg btn-primary px-4 w-100"
+                                                type="submit">Login</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="{{ asset('libs/js/app.js') }}"></script>
+</body>
+
+</html>

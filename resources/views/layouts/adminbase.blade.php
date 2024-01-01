@@ -57,6 +57,17 @@
                     <span class="text">Message</span>
                 </a>
             </li>
+            <li class="{{ request()->is('slider') ? 'active' : '' }}">
+                <a data-bs-target="#slider" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                    <i class="bi bi-chat-dots-fill"></i>
+                    <span class="align-middle">Slider</span>
+                </a>
+                <ul id="slider" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{ url('/stock-adjustment') }}">Stock
+                            Adjustment</a></li>
+    
+                </ul>
+            </li>
         </ul>
         <ul class="side-menu">
             <li class="{{ request()->is('settings') ? 'active' : '' }}">
@@ -88,13 +99,13 @@
                 </div>
                 <div class="col mt-1">
                     <p class="nav-link">
-                        Categories
+                        {{-- Categories --}}
                     </p>
                 </div>
             </div>
         </nav>
         {{-- NAVBAR --}}
-        @include('components.error_success_flash_message')
+        @include('admin.components.error_success_flash_message')
         @yield('content')
     </section>
     {{-- CONTENT --}}

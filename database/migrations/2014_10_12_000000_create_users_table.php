@@ -17,6 +17,10 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->integer('role_id');
+            $table->string('profile_img')->nullable();
+            $table->tinyInteger('user_type')->default(1)->comment('admin access=1, customer=2');
+            $table->boolean('status')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });
@@ -25,6 +29,7 @@ return new class extends Migration
             'name' => 'admin',
             'email' => 'admin@email.com',
             'password' => Hash::make('123456'),
+            'role_id' => 1,
             'created_at' => now(),
             'updated_at' => now(),
         ]);

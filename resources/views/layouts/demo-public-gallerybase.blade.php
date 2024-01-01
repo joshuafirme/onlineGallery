@@ -64,7 +64,7 @@
                 @yield('HeaderTitle')
             </div>
 
-            @include('components.error_success_flash_message')
+            @include('admin.components.error_success_flash_message')
 
             <div class="modal fade" id="uploadMedia" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
                 tabindex="-1">
