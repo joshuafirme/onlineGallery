@@ -18,7 +18,7 @@
 
                 <div class="col-md-6 mb-3">
                     <label for="formFile" class="form-label">Image</label>
-                    <input class="form-control file-upload" type="file" name="image" required>
+                    <input class="form-control file-upload" type="file" name="image">
                     <div class="mt-3">Preview</div>
                     <div class="overflow-auto img-container mt-2">
                         <img width="100%" class="img-preview" id="image" style="max-height: 200px;" />

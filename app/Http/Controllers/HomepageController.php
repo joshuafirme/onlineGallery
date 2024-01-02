@@ -2,54 +2,56 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper\Utils;
+use App\Models\Uses;
+use App\Models\UsesSlider;
 use Illuminate\Http\Request;
 use App\Models\Message;
+use App\Models\Slider;
+use App\Models\Card;
+use App\Models\Testimonial;
+use Storage;
 
 class HomepageController extends Controller
 {
     public function indexHomepage()
     {
-        return view('/users/homepage', []);
+        $sliders = Slider::get();
+        $cards = Card::get();
+        $testimonials = Testimonial::get();
+
+        $path = "content/web_content.json";
+        $why_choose_us = Utils::readStorage($path, 'why_choose_us');
+
+        return view('/users/homepage', compact('sliders', 'cards', 'testimonials', 'why_choose_us'));
     }
 
-    public function weddingUses()
+    public function uses($slug)
     {
-        return view('/users/eventsUse/wedding', []);
-    }
+        $uses = Uses::where('name', Utils::decodeSlug($slug, '-'))->first();
 
-    public function holidaysUses()
-    {
-        return view('/users/eventsUse/holidays', []);
-    }
+        $uses_slider = UsesSlider::where('uses_id', $uses->id)->get();
 
-    public function birthdaysUses()
-    {
-        return view('/users/eventsUse/birthdays', []);
-    }
-
-    public function corporatesUses()
-    {
-        return view('/users/eventsUse/corporates', []);
-    }
-
-    public function christmasUses()
-    {
-        return view('/users/eventsUse/christmas', []);
-    }
-
-    public function celebrationsUses()
-    {
-        return view('/users/eventsUse/celebrations', []);
+        return view('/users/uses', compact('uses', 'uses_slider'));
     }
 
     public function freeTrial()
     {
-        return view('/users/public/freeTrial', []);
+        $testimonials = Testimonial::get();
+
+        $path = "content/web_content.json";
+
+        $free_trial_guide = Utils::readStorage($path, 'free_trial_guide');
+
+        return view('/users/public/freeTrial', compact('free_trial_guide', 'testimonials'));
     }
 
     public function howItWorks()
     {
-        return view('/users/howitworks', []);
+        $path = "content/web_content.json";
+        $how_it_works = Utils::readStorage($path, 'how_it_works');
+
+        return view('/users/howitworks', compact('how_it_works'));
     }
 
     public function storeMessage(Request $request)

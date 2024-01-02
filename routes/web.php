@@ -99,12 +99,7 @@ Route::controller(HomepageController::class)->group(function () {
     Route::get('/howItWorks', 'howItWorks')->name('howItWorks');
     Route::get('/free-trial', 'freeTrial')->name('freeTrial');
 
-    Route::get('/uses-wedding', 'weddingUses')->name('weddingUses');
-    Route::get('/uses-holidays', 'holidaysUses')->name('holidaysUses');
-    Route::get('/uses-birthdays', 'birthdaysUses')->name('birthdaysUses');
-    Route::get('/uses-corporates', 'corporatesUses')->name('corporatesUses');
-    Route::get('/uses-christmas', 'christmasUses')->name('christmasUses');
-    Route::get('/uses-celebrations', 'celebrationsUses')->name('celebrationsUses');
+    Route::get('/uses/show/{slug}', 'uses');
 
     Route::post('/storeMessage', 'storeMessage');
 });

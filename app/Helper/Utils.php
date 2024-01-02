@@ -3,6 +3,7 @@ namespace App\Helper;
 use DateTime;
 use App\Models\MaintenanceModule;
 use PhpOffice\PhpSpreadsheet\Shared\Date as ExcelDate;
+use Storage;
 
 class Utils
 {
@@ -148,6 +149,19 @@ class Utils
         $str = strtolower($str);
         $str = preg_replace('/\s+/', '', $str); # removes all white spaces
         return $str;
+    }
+
+    static function readStorage($path, $type)
+    {
+        $data = null;
+        
+        if (Storage::disk('public')->exists($path)) {
+            $data = json_decode(Storage::disk('public')->get($path), true);
+            if (isset($data[$type])) {
+                $data = $data[$type];
+            }
+        }
+        return $data;
     }
 
     static function uploadFile($file, $folder = 'attachments/', $old_path = null)

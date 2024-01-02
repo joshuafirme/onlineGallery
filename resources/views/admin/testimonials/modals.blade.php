@@ -10,7 +10,7 @@
 
                 <div class="col-md-6 mb-3">
                     <label for="formFile" class="form-label">Profile Image</label>
-                    <input class="form-control file-upload" type="file" name="profile_img" required>
+                    <input class="form-control file-upload" type="file" name="profile_img">
                     <div class="mt-3">Preview</div>
                     <div class="overflow-auto img-container mt-2">
                         <img width="100%" class="img-preview" id="profile_img" style="max-height: 200px;" />

@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('title')
-    Make It Memories | How It Works
+    Make It Memories | Affiliate
 @endsection
 
 @section('content')

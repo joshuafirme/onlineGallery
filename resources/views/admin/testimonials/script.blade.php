@@ -3,21 +3,6 @@
 
         "use strict";
 
-        function clearInputs() {
-            let modal = $('#updateModal');
-            let inputs = modal.find('input,select');
-            $('.bundle-choices').addClass('d-none');
-            $.each(inputs, function(i, v) {
-                if (i > 1) {
-                    if ($(v).attr('type') == 'checkbox') {
-                        modal.find('input[type="checkbox"]').prop('checked', false);
-                        return;
-                    }
-                    $(v).val('');
-                }
-            });
-        }
-
         $(document).on('click', '.btn-edit', function() {
 
             let v = $(this);
@@ -37,7 +22,7 @@
                 mdl.find('form').attr('action', "/testimonials/update/" + data.id);
 
                 for (var key of Object.keys(data)) {
-                    if (key.indexOf('image') != -1 && data[key]) {
+                    if (key.indexOf('image') != -1 || key.indexOf('img') != -1 && data[key]) {
                         mdl.find('#' + key).attr('src', '/' + data[key]);
                         continue;
                     }

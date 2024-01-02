@@ -92,10 +92,15 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown"
                             style="letter-spacing: 2px; text-transform: uppercase;">
+                            @php
+                                $uses = new App\Models\Uses;
+                                $usesItems = $uses::get();
+                            @endphp
+                            @foreach ($usesItems as $usesItem)
+                                <a class="dropdown-item" href="/uses/show/{{ Utils::slugify($usesItem->name) }}">{{ $usesItem->name }}</a>
+                            @endforeach
                             <!-- Dropdown items go here -->
-                            <a class="dropdown-item" href="/uses-wedding"><img
-                                    src="{{ asset('assets/images/icons/wedding-arch.png') }}" alt="">
-                                Wedding</a>
+                            {{-- 
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/uses-holidays"><img
                                     src="{{ asset('assets/images/icons/travel.png') }}" alt=""> Holidays</a>
@@ -114,10 +119,11 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/uses-celebrations"><img
                                     src="{{ asset('assets/images/icons/confetti.png') }}" alt="">
-                                Celebrations</a>
+                                Celebrations</a> --}}
                         </div>
                     </li>
                     <li class="nav-item"><a href="/howItWorks" class="nav-link">How it Works</a></li>
+                    <li class="nav-item"><a href="/affiliate" class="nav-link">Affiliate</a></li>
                     {{-- <li class="nav-item"><a href="/reachUs" class="nav-link">Reach Us</a></li> --}}
                     <li class="nav-item"><a href="/products" class="nav-link"
                             style="border: 1px solid rgb(116, 116, 116); border-radius: 12px; margin: 0 10px; color:rgb(158, 37, 0); font-size: 14px;">Choose
