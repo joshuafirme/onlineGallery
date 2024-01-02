@@ -14,12 +14,14 @@ return new class extends Migration {
             $table->id();
             $table->float('priceWith')->default('1.00');
             $table->float('priceWithout')->default('2.00');
+            $table->integer('validityDays');
             $table->timestamps();
         });
 
         DB::table('pricings')->insert([
             'priceWith' => '1.00',
             'priceWithout' => '2.00',
+            'validityDays' => 7,
             'created_at' => now(),
             'updated_at' => now(),
         ]);

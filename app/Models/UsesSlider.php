@@ -5,9 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pricing extends Model
+class UsesSlider extends Model
 {
     use HasFactory;
-
-    protected $fillable = ['priceWith', 'priceWithout', 'validityDays'];
+    protected $fillable = [
+        'uses_id',
+        'title',
+        'image',
+    ];
 }

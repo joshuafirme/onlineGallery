@@ -146,8 +146,52 @@
                             </div>
                         </div>
                     </div>
-
+                    <div>
+                        <div class="row">
+                            <div class="col-8 pt-1">
+                                <div class="custom-control">
+                                    <label>Pricing</label>
+                                </div>
+                            </div>
+                            <div class="col-4 pt-1">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" name="permissions[]" id="chkbx-pricing"
+                                        value="pricing" class="parent-identy-maintenance">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="row">
+                            <div class="col-8 pt-1">
+                                <div class="custom-control">
+                                    <label>Affiliate Commission</label>
+                                </div>
+                            </div>
+                            <div class="col-4 pt-1">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" name="permissions[]" id="chkbx-affiliate_commission"
+                                        value="affiliate_commission" class="parent-identy-maintenance">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="mt-2"><strong>Website contents</strong></div>
+                    <div>
+                        <div class="row">
+                            <div class="col-8 pt-1">
+                                <div class="custom-control">
+                                    <label>Uses</label>
+                                </div>
+                            </div>
+                            <div class="col-4 pt-1">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" name="permissions[]" id="chkbx-uses"
+                                        value="uses" class="parent-identy-maintenance">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div>
                         <div class="row">
                             <div class="col-8 pt-1">
@@ -174,6 +218,21 @@
                                 <div class="custom-control custom-checkbox">
                                     <input type="checkbox" name="permissions[]" id="chkbx-free_trial_guide"
                                         value="free_trial_guide" class="parent-identy-maintenance">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="row">
+                            <div class="col-8 pt-1">
+                                <div class="custom-control">
+                                    <label>How it Works</label>
+                                </div>
+                            </div>
+                            <div class="col-4 pt-1">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" name="permissions[]" id="chkbx-how_it_works"
+                                        value="how_it_works" class="parent-identy-maintenance">
                                 </div>
                             </div>
                         </div>

@@ -6,7 +6,7 @@
     <div class="sidebar-content js-simplebar">
         <a class="sidebar-brand" href="/dashboard">
             <span class="sidebar-brand-text align-middle">
-                <img width="150px" src="{{ asset('img/logo.png') }}" alt="">
+                <img width="150px" src="{{ asset('assets/images/icons/LOGO3.png') }}" alt="">
             </span>
             <svg class="sidebar-brand-icon align-middle" width="32px" height="32px" viewBox="0 0 24 24" fill="none"
                 stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" color="#FFFFFF"
@@ -106,14 +106,30 @@
                     </a>
                     <ul id="forms" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
 
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ url('/pricing') }}">
-                                Pricing
-                            </a>
-                        </li>
+                        @if (in_array('pricing', $permissions))
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="{{ url('/pricing') }}">
+                                    Pricing
+                                </a>
+                            </li>
+                        @endif
+                        @if (in_array('affiliate_commission', $permissions))
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="{{ url('/website-content?type=affiliate_commission') }}">
+                                    Affiliate Commission
+                                </a>
+                            </li>
+                        @endif
                         <li class="sidebar-header" style="margin-left: 7px;">
                             Website contents
                         </li>
+                        @if (in_array('uses', $permissions))
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="{{ url('/uses') }}">
+                                    Uses
+                                </a>
+                            </li>
+                        @endif
                         @if (in_array('why_choose_us', $permissions))
                             <li class="sidebar-item">
                                 <a class="sidebar-link" href="{{ url('/website-content?type=why_choose_us') }}">
@@ -125,6 +141,13 @@
                             <li class="sidebar-item">
                                 <a class="sidebar-link" href="{{ url('/website-content?type=free_trial_guide') }}">
                                     Free Trial Guide
+                                </a>
+                            </li>
+                        @endif
+                        @if (in_array('how_it_works', $permissions))
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="{{ url('/website-content?type=how_it_works') }}">
+                                    How it Works
                                 </a>
                             </li>
                         @endif

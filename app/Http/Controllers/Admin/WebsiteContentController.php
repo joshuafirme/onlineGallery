@@ -4,10 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Helper\Utils;
+use App\Models\User;
 use Storage;
 
 class WebsiteContentController extends Controller
-{
+{  
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            return User::isPermitted($request->type) ? $next($request) : redirect('/login');
+        });
+    }  
     public function index()
     {
         $data = null;

@@ -16,15 +16,25 @@
                         @include('admin.components.alerts')
 
 
-                        <form action="{{ url('/website-content') }}" method="POST" class="row"
-                            autocomplete="off">
+                        <form action="{{ url('/website-content') }}" method="POST" class="row" autocomplete="off">
                             @csrf
 
                             <input type="hidden" name="type" value="{{ request()->type }}">
 
-                            <div class="col-12 mb-3">
-                                <textarea id="editor" name="content"> {!! $data !!}  </textarea>
-                            </div>
+                            @if (request()->type == 'affiliate_commission')
+                                <div class="col-4 mb-3">
+                                    <label class="form-label">Commission Percentage</label>
+                                    <div class="input-group mb-3">
+                                        <input type="number" step="0.1" class="form-control" name="content"
+                                            value="{{ $data }}">
+                                        <span class="input-group-text" id="basic-addon2">%</span>
+                                    </div>
+                                </div>
+                            @else
+                                <div class="col-12 mb-3">
+                                    <textarea id="editor" name="content"> {!! $data !!}  </textarea>
+                                </div>
+                            @endif
 
                             <div class="col-6 mt-4">
                                 <button class="btn btn-primary px-4" type="submit">Save</button>

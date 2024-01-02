@@ -3,10 +3,12 @@
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CardController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\PricingController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserRoleController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\UsesController;
 use App\Http\Controllers\Admin\WebsiteContentController;
 use Illuminate\Support\Facades\Route;
 
@@ -65,6 +67,17 @@ Route::middleware('auth')->group(function () {
         Route::post('/user-roles/update/{id}', 'update');
     });
 
+    Route::controller(UsesController::class)->group(function () {
+        Route::resource('/uses', UsesController::class);
+        Route::post('/uses/update/{id}', 'update');
+
+        Route::get('/uses-sliders/show/{id}', 'showSlider');
+        Route::post('/uses-sliders/store', 'storeSlider');
+        Route::post('/uses-sliders/update/{id}', 'updateSlider');
+        Route::delete('/uses-sliders/{id}', 'deleteSlider');
+    });
+
+
     Route::resource('/sliders', SliderController::class);
     Route::post('/sliders/update/{id}', [SliderController::class, 'update']);
     
@@ -76,6 +89,9 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('/website-content', WebsiteContentController::class);
     Route::post('/website-content', [WebsiteContentController::class, 'update']);
+    
+    Route::resource('/pricing', PricingController::class);
+    Route::put('/pricing/update/{id}', [PricingController::class, 'update']);
 });
 // Homepage Controller
 Route::controller(HomepageController::class)->group(function () {
