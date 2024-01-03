@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AffiliateDashboardController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CardController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\Admin\UserRoleController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\UsesController;
 use App\Http\Controllers\Admin\WebsiteContentController;
+use App\Http\Controllers\AffilateController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomepageController;
@@ -77,6 +79,12 @@ Route::middleware('auth')->group(function () {
         Route::delete('/uses-sliders/{id}', 'deleteSlider');
     });
 
+    Route::controller(AffiliateDashboardController::class)->group(function () {
+        Route::resource('/affiliates-accounts', AffiliateDashboardController::class);
+        Route::get('/affiliates-accounts', 'affiliateAccounts');
+        Route::get('/affiliates-commissions', 'affiliateCommissions');
+    });
+
 
     Route::resource('/sliders', SliderController::class);
     Route::post('/sliders/update/{id}', [SliderController::class, 'update']);
@@ -95,7 +103,7 @@ Route::middleware('auth')->group(function () {
 });
 // Homepage Controller
 Route::controller(HomepageController::class)->group(function () {
-    Route::get('/homepage', 'indexHomepage')->name('homepage');
+    Route::get('/homepage/{account_name?}', 'indexHomepage')->name('homepage');
     Route::get('/howItWorks', 'howItWorks')->name('howItWorks');
     Route::get('/free-trial', 'freeTrial')->name('freeTrial');
 
@@ -164,3 +172,7 @@ Route::controller(GalleryController::class)->group(function () {
 
     Route::delete('/delete-media/{id}', 'delete')->name('delete-media');
 });
+
+Route::post('/affiliate/do-register', [AffilateController::class, 'doRegister']);
+Route::get('/affiliate/registration', [AffilateController::class, 'registration']);
+Route::resource('/affiliate', AffilateController::class);

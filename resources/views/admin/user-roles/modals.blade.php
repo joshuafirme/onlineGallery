@@ -70,6 +70,41 @@
                             <div class="col-8 pt-1">
                                 <div class="custom-control">
                                     <label for="customCheck-1">
+                                        <strong>Affiliate Accounts</strong></label>
+                                </div>
+                            </div>
+                            <div class="col-4 pt-1">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" name="permissions[]" value="affiliate_accounts"
+                                        class="ic-parent-permission" id="chkbx-affiliate_accounts" ref="1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="ic_parent_permission">
+                        <div class="row my-2">
+                            <div class="col-8 pt-1">
+                                <div class="custom-control">
+                                    <label for="customCheck-1">
+                                        <strong>Affiliate commissions</strong></label>
+                                </div>
+                            </div>
+                            <div class="col-4 pt-1">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" name="permissions[]" value="affiliate_commissions"
+                                        class="ic-parent-permission" id="chkbx-affiliate_commissions" ref="1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    
+                    <div class="ic_parent_permission">
+                        <div class="row my-2">
+                            <div class="col-8 pt-1">
+                                <div class="custom-control">
+                                    <label for="customCheck-1">
                                         <strong>Messages</strong></label>
                                 </div>
                             </div>
@@ -233,6 +268,21 @@
                                 <div class="custom-control custom-checkbox">
                                     <input type="checkbox" name="permissions[]" id="chkbx-how_it_works"
                                         value="how_it_works" class="parent-identy-maintenance">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="row">
+                            <div class="col-8 pt-1">
+                                <div class="custom-control">
+                                    <label>Affiliate</label>
+                                </div>
+                            </div>
+                            <div class="col-4 pt-1">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" name="permissions[]" id="chkbx-affiliate"
+                                        value="affiliate" class="parent-identy-maintenance">
                                 </div>
                             </div>
                         </div>

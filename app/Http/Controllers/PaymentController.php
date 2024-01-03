@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Helper\Utils;
+use App\Models\AffiliateCommission;
 use Illuminate\Http\Request;
 use Omnipay\Omnipay;
 use App\Models\User;
@@ -123,6 +125,8 @@ class PaymentController extends Controller
 
                 $payment->save();
 
+                $this->saveAffiliateCommission($payment->amount);
+
                 return redirect()
                     ->route('homepage')
                     ->with('success', 'Payment is Successful. Your Transaction ID is: ' . $arr['id']);
@@ -177,6 +181,8 @@ class PaymentController extends Controller
                 // Mail::to($payment->payment_email)->send(new PaymentSuccess($payment->payment_id, $payment->client_name, $payment->uuid));
 
                 $payment->save();
+                
+                $this->saveAffiliateCommission($payment->amount);
 
                 return redirect()
                     ->route('homepage')
@@ -193,5 +199,22 @@ class PaymentController extends Controller
     {
         // Handle payment cancellation
         return redirect('/')->with('error', 'Payment cancelled.');
+    }
+
+    public function saveAffiliateCommission($amount)
+    {
+        $path = "content/web_content.json";
+        $affiliate_commission = Utils::readStorage($path, 'affiliate_commission');
+
+        $commission_percentage = (double) $affiliate_commission / 100;
+        $commission_amount = $amount * $commission_percentage;
+
+        $affiliate_uuid = session()->get('affiliate_uuid');
+
+        $affiliate = new AffiliateCommission;
+        $affiliate->affiliate_uuid = $affiliate_uuid;
+        $affiliate->commission_amount = $commission_amount;
+        $affiliate->percentage = $commission_percentage;
+        $affiliate->save();
     }
 }

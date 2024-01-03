@@ -82,6 +82,31 @@
                 </li>
             @endif
 
+            @php
+                $affiliate_modules = ['affiliate_accounts', 'affiliate_commissions'];
+            @endphp
+            @if (array_intersect($affiliate_modules, $permissions))
+                <li class="sidebar-item">
+                    <a data-bs-target="#affiliate" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                        <img width="24" height="24"
+                            src="https://img.icons8.com/ios-filled/24/FFFFFF/customer-insight.png" />
+                        <span class="align-middle">Affiliate</span>
+                    </a>
+                    <ul id="affiliate" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+                        @if (in_array('affiliate_accounts', $permissions))
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="{{ url('/affiliates-accounts') }}">Accounts</a>
+                            </li>
+                        @endif
+                        @if (in_array('affiliate_commissions', $permissions))
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="{{ url('/affiliates-commissions') }}">Commissions</a>
+                            </li>
+                        @endif
+                    </ul>
+                </li>
+            @endif
+
             @if (in_array('messages', $permissions))
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ url('/message') }}">
@@ -115,7 +140,8 @@
                         @endif
                         @if (in_array('affiliate_commission', $permissions))
                             <li class="sidebar-item">
-                                <a class="sidebar-link" href="{{ url('/website-content?type=affiliate_commission') }}">
+                                <a class="sidebar-link"
+                                    href="{{ url('/website-content?type=affiliate_commission') }}">
                                     Affiliate Commission
                                 </a>
                             </li>
@@ -148,6 +174,13 @@
                             <li class="sidebar-item">
                                 <a class="sidebar-link" href="{{ url('/website-content?type=how_it_works') }}">
                                     How it Works
+                                </a>
+                            </li>
+                        @endif
+                        @if (in_array('affiliate', $permissions))
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="{{ url('/website-content?type=affiliate') }}">
+                                    Affiliate
                                 </a>
                             </li>
                         @endif

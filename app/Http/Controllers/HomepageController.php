@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helper\Utils;
+use App\Models\Affiliate;
 use App\Models\Uses;
 use App\Models\UsesSlider;
 use Illuminate\Http\Request;
@@ -14,8 +15,22 @@ use Storage;
 
 class HomepageController extends Controller
 {
-    public function indexHomepage()
+    public function indexHomepage(string $account_name = null)
     {
+        $affiliate = null;
+
+        if ($account_name) {
+            
+            $affiliate = Affiliate::where('account_name', $account_name)->first();
+    
+            if ($affiliate) {
+                session()->put('affiliate_uuid', $affiliate->uuid);
+            }
+            else {
+                return view('users.pages.403');
+            }
+        }
+        
         $sliders = Slider::get();
         $cards = Card::get();
         $testimonials = Testimonial::get();
@@ -23,7 +38,7 @@ class HomepageController extends Controller
         $path = "content/web_content.json";
         $why_choose_us = Utils::readStorage($path, 'why_choose_us');
 
-        return view('/users/homepage', compact('sliders', 'cards', 'testimonials', 'why_choose_us'));
+        return view('/users/homepage', compact('sliders', 'cards', 'testimonials', 'why_choose_us', 'affiliate'));
     }
 
     public function uses($slug)
