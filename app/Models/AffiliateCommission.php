@@ -11,6 +11,7 @@ class AffiliateCommission extends Model
 
     protected $fillable = [
         'affiliate_uuid',
+        'accounts_payments_uuid',
         'commission_amount',
         'percentage',
     ];

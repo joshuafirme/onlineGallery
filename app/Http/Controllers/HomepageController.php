@@ -20,6 +20,8 @@ class HomepageController extends Controller
         $affiliate = null;
 
         if ($account_name) {
+
+            $account_name = Utils::decodeSlug($account_name, '-');
             
             $affiliate = Affiliate::where('account_name', $account_name)->first();
     

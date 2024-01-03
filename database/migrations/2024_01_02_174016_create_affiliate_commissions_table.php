@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('affiliate_commissions', function (Blueprint $table) {
             $table->id();
-            $table->uuid('affiliate_uuid');
+            $table->uuid('affiliate_uuid');   
+            $table->uuid('accounts_payments_uuid');
+
+            $table->foreign('accounts_payments_uuid')
+                ->references('uuid')
+                ->on('accounts_payments');
+
             $table->decimal('commission_amount', 8, 2);
             $table->decimal('percentage', 3, 2);
 

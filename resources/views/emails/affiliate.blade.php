@@ -16,7 +16,7 @@
     <p>Thank you for choosing our service. If you have any questions or need further assistance, feel free to contact
         us.</p>
 
-    <a href="{{ env('APP_URL') }}/your-gallery/{{ $uuid }}">View your Gallery</a>
+    <a href="http://127.0.0.1:8000/your-gallery/{{ $uuid }}">View your Gallery</a>
     </div>
 </body>
 

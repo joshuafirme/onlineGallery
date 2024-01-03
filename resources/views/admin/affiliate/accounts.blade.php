@@ -28,8 +28,9 @@
                                         <th>Unique ID</th>
                                         <th>Account Name</th>
                                         <th>Email</th>
+                                        <th>Landing Page Link</th>
                                         <th>Contact Number</th>
-                                        <th>Social Links</th>
+                                        <th>Social Media Accounts</th>
                                         <th>Date Registered</th>
                                     </tr>
                                 </thead>
@@ -39,23 +40,32 @@
                                             <tr>
                                                 <td>{{ $item->uuid }}</td>
                                                 <td>{{ $item->account_name }}</td>
-                                                <td><a target="_blank"
-                                                        href="mailto:{{ $item->email }}">{{ $item->email }}</a></td>
+                                                <td>
+                                                    <a target="_blank"
+                                                        href="mailto:{{ $item->email }}">{{ $item->email }}</a>
+                                                </td>
+                                                <td>
+                                                    @php
+                                                        $landing_page = env('APP_URL') . '/homepage/' . Utils::slugify($item->account_name, '-')
+                                                    @endphp
+                                                    <a target="_blank"
+                                                    href="{{ $landing_page }}">{{ $landing_page }}</a>
+                                                </td>
                                                 <td>{{ $item->contact_number }}</td>
                                                 <td>
                                                     @if ($item->fb_link)
-                                                        <div><i class="fa fa-facebook"></i> <a
-                                                                href="{{ $item->fb_link }}">{{ $item->fb_link }}</a>
+                                                        <div> 
+                                                            <a target="_blank" href="{{ $item->fb_link }}"><i class="fa-brands fa-facebook-f"></i> {{ $item->fb_link }}</a>
                                                         </div>
                                                     @endif
                                                     @if ($item->ig_link)
-                                                        <div><i class="fa fa-instagram"></i> <a
-                                                                href="{{ $item->ig_link }}">{{ $item->ig_link }}</a>
+                                                        <div> 
+                                                            <a target="_blank" href="{{ $item->ig_link }}"><i class="fa-brands fa-instagram"></i> {{ $item->ig_link }}</a>
                                                         </div>
                                                     @endif
                                                     @if ($item->tiktok_link)
-                                                        <div><i class="fa fa-tiktok"></i> <a
-                                                                href="{{ $item->tiktok_link }}">{{ $item->tiktok_link }}</a>
+                                                        <div> 
+                                                            <a target="_blank" href="{{ $item->tiktok_link }}"><i class="fa-brands fa-tiktok"></i> {{ $item->tiktok_link }}</a>
                                                         </div>
                                                     @endif
                                                 </td>

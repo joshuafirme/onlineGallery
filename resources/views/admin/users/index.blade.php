@@ -30,10 +30,6 @@
                     <a class="btn btn-sm btn-primary mt-3 mb-3 btn-edit" data-bs-toggle="modal"
                         data-bs-target="#updateModal"><i class="fa fa-plus"></i>
                         Add User</a>
-                    <a class="btn btn-sm btn-primary mt-3 mb-3" data-bs-toggle="modal"
-                        data-bs-target="#importModal"><i class="fas fa-file-excel"></i>
-                        Import
-                    </a>
                     <div class="row">
                         <form action="{{ url('/users') }}" method="get" class="mt-2 ml-auto col-md-4"
                             autocomplete="off" style="margin-left: auto">

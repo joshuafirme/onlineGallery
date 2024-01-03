@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 
 use App\Helper\Utils;
+use App\Mail\AffiliateMail;
+use App\Models\Affiliate;
 use App\Models\AffiliateCommission;
 use Illuminate\Http\Request;
 use Omnipay\Omnipay;
@@ -120,12 +122,13 @@ class PaymentController extends Controller
                 // Assuming you have a 'client_name' column in your Payment model
                 $payment->client_name = $clientFullName;
 
-                Mail::to('patrickespena016@gmail.com')->send(new PaymentSuccess($payment->payment_id, $payment->client_name, $payment->uuid));
-                // Mail::to($payment->payment_email)->send(new PaymentSuccess($payment->payment_id, $payment->client_name, $payment->uuid));
+                if (!str_contains($payment->payment_email, ".example.com") ) {
+                    Mail::to($payment->payment_email)->send(new PaymentSuccess($payment->payment_id, $payment->client_name, $payment->uuid));
+                }
 
                 $payment->save();
 
-                $this->saveAffiliateCommission($payment->amount);
+                $this->saveAffiliateCommission($payment->amount, $payment->uuid);
 
                 return redirect()
                     ->route('homepage')
@@ -177,12 +180,13 @@ class PaymentController extends Controller
                 // Assuming you have a 'client_name' column in your Payment model
                 $payment->client_name = $clientFullName;
 
-                Mail::to('patrickespena016@gmail.com')->send(new PaymentSuccess($payment->payment_id, $payment->client_name, $payment->uuid));
-                // Mail::to($payment->payment_email)->send(new PaymentSuccess($payment->payment_id, $payment->client_name, $payment->uuid));
+                if (!str_contains($payment->payment_email, ".example.com") ) {
+                    Mail::to($payment->payment_email)->send(new PaymentSuccess($payment->payment_id, $payment->client_name, $payment->uuid));
+                }
 
                 $payment->save();
-                
-                $this->saveAffiliateCommission($payment->amount);
+
+                $this->saveAffiliateCommission($payment->amount, $payment->uuid);
 
                 return redirect()
                     ->route('homepage')
@@ -201,20 +205,38 @@ class PaymentController extends Controller
         return redirect('/')->with('error', 'Payment cancelled.');
     }
 
-    public function saveAffiliateCommission($amount)
+    public function saveAffiliateCommission($amount, $accounts_payments_uuid)
     {
-        $path = "content/web_content.json";
-        $affiliate_commission = Utils::readStorage($path, 'affiliate_commission');
-
-        $commission_percentage = (double) $affiliate_commission / 100;
-        $commission_amount = $amount * $commission_percentage;
-
         $affiliate_uuid = session()->get('affiliate_uuid');
 
-        $affiliate = new AffiliateCommission;
-        $affiliate->affiliate_uuid = $affiliate_uuid;
-        $affiliate->commission_amount = $commission_amount;
-        $affiliate->percentage = $commission_percentage;
-        $affiliate->save();
+        $affiliate = Affiliate::where('uuid', $affiliate_uuid)->first();
+
+        if ($affiliate_uuid && $affiliate) {
+            $path = "content/web_content.json";
+            $affiliate_commission = Utils::readStorage($path, 'affiliate_commission');
+
+            $commission_percentage = (double) $affiliate_commission / 100;
+            $commission_amount = $amount * $commission_percentage;
+
+            $commission = new AffiliateCommission;
+            $commission->affiliate_uuid = $affiliate_uuid;
+            $commission->accounts_payments_uuid = $accounts_payments_uuid;
+            $commission->commission_amount = $commission_amount;
+            $commission->percentage = $commission_percentage;
+            $commission->save();
+
+            $data = [
+                'commission_amount' => $commission_amount,
+                'account_name' => $affiliate->account_name
+            ];
+
+            Mail::to($affiliate->email)->send(
+                new AffiliateMail(
+                    "Affiliate Commission Confirmation",
+                    Utils::arrayToObject($data),
+                    'emails.affiliate-commission'
+                )
+            );
+        }
     }
 }

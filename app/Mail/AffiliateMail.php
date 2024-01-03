@@ -9,20 +9,21 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class PaymentSuccess extends Mailable
+class AffiliateMail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $transactionId;
-    public $clientName;
-    public $uuid;
+
+    public $subject;
+    public $data;
+    public $view;
     /**
      * Create a new message instance.
      */
-    public function __construct($transactionId, $clientName, $uuid)
+    public function __construct($subject, $data, $view)
     {
-        $this->transactionId = $transactionId;
-        $this->clientName = $clientName;
-        $this->uuid = $uuid;
+        $this->subject = $subject;
+        $this->data = $data;
+        $this->view = $view;
     }
 
     /**
@@ -30,7 +31,9 @@ class PaymentSuccess extends Mailable
      */
     public function envelope(): Envelope
     {
-        return new Envelope(subject: 'Payment Success');
+        return new Envelope(
+            subject: $this->subject,
+        );
     }
 
     /**
@@ -38,7 +41,20 @@ class PaymentSuccess extends Mailable
      */
     public function content(): Content
     {
-        return new Content(view: 'emails.payment-success');
+        return new Content(
+            view: $this->view,
+        );
+    }
+
+    public function build()
+    {
+        return
+            $this->from(env('MAIL_FROM_ADDRESS'), "Make It Memories")
+                ->view($this->view)
+                ->subject($this->subject)
+                ->with([
+                    'data' => $this->data,
+                ]);
     }
 
     /**
@@ -49,16 +65,5 @@ class PaymentSuccess extends Mailable
     public function attachments(): array
     {
         return [];
-    }
-
-    public function build()
-    {
-        return $this->view('emails.payment-success')
-            ->subject('Payment Successful')
-            ->with([
-                'transactionId' => $this->transactionId,
-                'clientName' => $this->clientName,
-                'uuid' => $this->uuid,
-            ]);
     }
 }
