@@ -85,7 +85,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/affiliates-commissions', 'affiliateCommissions');
     });
 
-
     Route::resource('/sliders', SliderController::class);
     Route::post('/sliders/update/{id}', [SliderController::class, 'update']);
     
@@ -101,6 +100,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('/pricing', PricingController::class);
     Route::put('/pricing/update/{id}', [PricingController::class, 'update']);
 });
+
+Route::get('/affiliate-dashboard/{uuid}', [AffiliateDashboardController::class, 'affiliateDashboard']);
+
 // Homepage Controller
 Route::controller(HomepageController::class)->group(function () {
     Route::get('/homepage/{account_name?}', 'indexHomepage')->name('homepage');

@@ -13,6 +13,9 @@ class AffiliateDashboardController extends Controller
     public function __construct()
     {
         $this->middleware(function ($request, $next) {
+            if (str_contains($request->path(), 'affiliate-dashboard')) {
+                return $next($request);
+            }
             return User::isPermitted($this->page) ? $next($request) : redirect('/login');
         });
     }  
@@ -32,4 +35,17 @@ class AffiliateDashboardController extends Controller
         return view('admin.affiliate.commissions', compact('data'));
     }
 
+    public function affiliateDashboard($uuid)
+    {            
+        $affiliate = Affiliate::where('uuid', $uuid)->first();
+
+        if (!$affiliate) {
+            return view('users.pages.403');
+        }
+
+        $commissions = AffiliateCommission::where('affiliate_uuid', $uuid)->orderby('id', 'desc')->get();
+        $total_earned = AffiliateCommission::where('affiliate_uuid', $uuid)->sum('commission_amount');
+
+        return view('admin.affiliate.dashboard', compact('affiliate', 'commissions', 'total_earned'));
+    }
 }

@@ -74,30 +74,32 @@
                         </div>
                     </div> --}}
                 </li>
-                <li class="nav-item">
-                    <a class="nav-icon js-fullscreen d-none d-lg-block" href="#">
-                        <div class="position-relative">
-                            <i class="align-middle" data-feather="maximize"></i>
-                        </div>
-                    </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-icon pe-md-0 dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                        <img src="https://img.icons8.com/small/50/6C757D/user.png" class="avatar img-fluid rounded"
-                            alt="Charles Hall" />
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end">
-                        <a class="dropdown-item" href="{{ url('/user/change-password') }}"><i class="align-middle me-1"
-                                data-feather="lock"></i> Change password</a>
-                        <a class="dropdown-item" href="#"
-                            onclick="event.preventDefault();
+                @if (!str_contains(request()->path(), 'affiliate-dashboard'))
+                    <li class="nav-item">
+                        <a class="nav-icon js-fullscreen d-none d-lg-block" href="#">
+                            <div class="position-relative">
+                                <i class="align-middle" data-feather="maximize"></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-icon pe-md-0 dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            <img src="https://img.icons8.com/small/50/6C757D/user.png" class="avatar img-fluid rounded"
+                                alt="Charles Hall" />
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="{{ url('/user/change-password') }}"><i
+                                    class="align-middle me-1" data-feather="lock"></i> Change password</a>
+                            <a class="dropdown-item" href="#"
+                                onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">Log
-                            out</a>
-                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    </div>
-                </li>
+                                out</a>
+                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                @endif
             </ul>
         </div>
     </nav>

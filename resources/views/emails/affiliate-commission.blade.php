@@ -17,14 +17,23 @@
 
     <strong>Commission Details:</strong>
     <ul>
-        <li><strong>Commission Amount:</strong> ${{ $data->commission_amount }}</li>
-        <li><strong>From Affiliate Link:</strong> <a href="{{ env('APP_URL') . '/homepage/' . Utils::slugify($data->account_name, '-') }}" target="_blank"></a></li>
+        <li><strong>Commission Amount:</strong> {{ $data->commission_amount }} {{ env('PAYPAL_CURRENCY') }}</li>
+        @php
+            $link = env('APP_URL') . '/homepage/' . Utils::slugify($data->account_name, '-');
+        @endphp
+        <li><strong>From Affiliate Link:</strong> <a href="{{ $link }}" target="_blank">{{ $link }}</a>
+        </li>
         <li><strong>Date:</strong> {{ date('Y-m-d') }}</li>
     </ul>
 
     <p><strong>Payment Process:</strong><br>
         Your commission will be processed according to our payment schedule. Please allow [Processing Time] for the
         funds to be transferred to your account.
+    </p>
+
+    <p><strong>Your Dashboard Link:</strong><br>
+
+        <a href="{{ env('APP_URL') }}/affiliate-dashboard/{{ $data->uuid }}">Your Unique Affiliate Dashboard Link</a>
     </p>
 
     <p><strong>Next Steps:</strong><br>

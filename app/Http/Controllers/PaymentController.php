@@ -227,7 +227,8 @@ class PaymentController extends Controller
 
             $data = [
                 'commission_amount' => $commission_amount,
-                'account_name' => $affiliate->account_name
+                'account_name' => $affiliate->account_name,
+                'uuid' => $affiliate_uuid
             ];
 
             Mail::to($affiliate->email)->send(
