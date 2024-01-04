@@ -47,14 +47,13 @@
                                                 </td>
                                                 <td>
                                                     <a target="_blank"
-                                                        href="/affiliate-dashboard/{{ $item->uuid }}">{{ env('APP_URL') . '/affiliate-dashboard/' . $item->uuid }}</a>
+                                                        href="/affiliate-dashboard/{{ $item->uuid }}"><i class="fas fa-external-link"></i></a>
                                                 </td>
                                                 <td>
                                                     @php
                                                         $landing_page = env('APP_URL') . '/homepage/' . Utils::slugify($item->account_name, '-')
                                                     @endphp
-                                                    <a target="_blank"
-                                                    href="{{ $landing_page }}">{{ $landing_page }}</a>
+                                                    <a target="_blank" href="{{ $landing_page }}"><i class="fas fa-external-link"></i></a>
                                                 </td>
                                                 <td>{{ $item->contact_number }}</td>
                                                 <td>
