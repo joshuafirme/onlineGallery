@@ -223,6 +223,7 @@ class PaymentController extends Controller
             $commission->accounts_payments_uuid = $accounts_payments_uuid;
             $commission->commission_amount = $commission_amount;
             $commission->percentage = $commission_percentage;
+            $commission->currency = env('PAYPAL_CURRENCY');
             $commission->save();
 
             $data = [

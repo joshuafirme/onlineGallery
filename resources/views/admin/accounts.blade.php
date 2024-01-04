@@ -27,6 +27,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Client</th>
+                                        <th>Amount</th>
                                         <th>Payer ID</th>
                                         <th>View</th>
                                         <th>Date</th>
@@ -38,6 +39,7 @@
                                             <tr>
                                                 <td>{{ $account->id }}.)</td>
                                                 <td>{{ $account->client_name }}</td>
+                                                <td>{{ $account->amount }} {{ $account->currency }}</td>
                                                 <td>{{ $account->payer_id }}</td>
                                                 <td><a target="_blank" href="public-gallery/events/{{ $account->uuid }}/show">View
                                                         gallery</a></td>

@@ -41,7 +41,7 @@
                                                 <td><a target="_blank"
                                                         href="mailto:{{ $item->email }}">{{ $item->email }}</a></td>
                                                 <td>{{ $item->contact_number }}</td>
-                                                <td>{{ $item->commission_amount }} {{ env('PAYPAL_CURRENCY') }}</td>
+                                                <td>{{ $item->commission_amount }} {{ $item->currency }}</td>
                                                 <td>{{ $item->percentage }}</th>
                                                 <td>{{ $item->created_at }}
                                                 </td>

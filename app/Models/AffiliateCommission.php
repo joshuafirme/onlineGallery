@@ -14,5 +14,6 @@ class AffiliateCommission extends Model
         'accounts_payments_uuid',
         'commission_amount',
         'percentage',
+        'currency'
     ];
 }
