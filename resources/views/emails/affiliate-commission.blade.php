@@ -17,7 +17,7 @@
 
     <strong>Commission Details:</strong>
     <ul>
-        <li><strong>Commission Amount:</strong> {{ $data->commission_amount }} {{ env('PAYPAL_CURRENCY') }}</li>
+        <li><strong>Commission Amount:</strong> {{ $data->commission_amount }} {{ $data->currency }}</li>
         @php
             $link = env('APP_URL') . '/homepage/' . Utils::slugify($data->account_name, '-');
         @endphp

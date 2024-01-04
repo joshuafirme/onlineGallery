@@ -49,7 +49,7 @@
                                 </div>
                             </div>
                         </div>
-                        <h1 class="mt-1 mb-3">${{ $total_earned }}</h1>
+                        <h1 class="mt-1 mb-3">{{ $total_earned }} {{ env('PAYPAL_CURRENCY') }}</h1>
                     </div>
                 </div>
             </div>
@@ -72,7 +72,7 @@
                                 @if (count($commissions) > 0)
                                     @foreach ($commissions as $commission)
                                         <tr>
-                                            <td>{{ $commission->commission_amount }} {{ env('PAYPAL_CURRENCY') }}</td>
+                                            <td>{{ $commission->commission_amount }} {{ $commission->currency }}</td>
                                             <td>{{ $commission->percentage }}</th>
                                             <td>{{ $commission->created_at }}
                                             </td>

@@ -56,10 +56,10 @@
                             onclick="showForm('formWithout', 'buttonWithout', 'withoutPricing' , 'withoutWatermarks')">Without</button>
 
                         <div id="withPricing">
-                            $ {{ number_format($pricing->priceWith, 2) }}
+                            {{ number_format($pricing->priceWith, 2) }} {{ env('PAYPAL_CURRENCY') }} 
                         </div>
                         <div id="withoutPricing" style="display: none;">
-                            $ {{ number_format($pricing->priceWithout, 2) }}
+                            {{ number_format($pricing->priceWithout, 2) }} {{ env('PAYPAL_CURRENCY') }} 
                         </div>
 
                         <div id="formWith">

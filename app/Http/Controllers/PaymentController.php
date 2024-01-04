@@ -229,6 +229,7 @@ class PaymentController extends Controller
             $data = [
                 'commission_amount' => $commission_amount,
                 'account_name' => $affiliate->account_name,
+                'currency' => $commission->currency,
                 'uuid' => $affiliate_uuid
             ];
 
