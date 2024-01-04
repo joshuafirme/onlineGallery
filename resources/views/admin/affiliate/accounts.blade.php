@@ -28,6 +28,7 @@
                                         <th>Unique ID</th>
                                         <th>Account Name</th>
                                         <th>Email</th>
+                                        <th>Dashboard Link</th>
                                         <th>Landing Page Link</th>
                                         <th>Contact Number</th>
                                         <th>Social Media Accounts</th>
@@ -43,6 +44,10 @@
                                                 <td>
                                                     <a target="_blank"
                                                         href="mailto:{{ $item->email }}">{{ $item->email }}</a>
+                                                </td>
+                                                <td>
+                                                    <a target="_blank"
+                                                        href="/affiliate-dashboard/{{ $item->uuid }}">{{ env('APP_URL') . '/affiliate-dashboard/' . $item->uuid }}</a>
                                                 </td>
                                                 <td>
                                                     @php
