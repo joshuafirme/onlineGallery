@@ -38,9 +38,9 @@
                 <p>Once registered, a confirmation email will be
                     sent to you, containing a link to access your personalized affiliate dashboard.</p>
 
-                <div class="d-flex justify-content-center mt-5">
+                <div class="d-flex justify-content-center mt-5 row">
 
-                    <div class="card" style="margin-bottom: 150px; width: 50%">
+                    <div class="card col-xs-12 col-md-8 col-lg-5" style="margin-bottom: 150px;">
                         <div class="card-body p-5">
 
                             @if ($errors->any())
