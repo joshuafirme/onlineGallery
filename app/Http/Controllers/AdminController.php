@@ -129,9 +129,9 @@ class AdminController extends Controller
             $user = User::find($userId);
         }
 
-        $userAccounts = User::orderby('id', 'desc')->simplePaginate(20);
+        $userAccounts = User::orderby('id', 'desc')->paginate(20);
 
-        $accounts = AccountsPayments::orderby('id', 'desc')->simplePaginate(20);
+        $accounts = AccountsPayments::orderby('id', 'desc')->paginate(20);
 
         return view('/admin/accounts', [
             'user' => $user,
