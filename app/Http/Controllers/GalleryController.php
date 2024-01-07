@@ -201,8 +201,8 @@ class GalleryController extends Controller
                 if ($file instanceof \Illuminate\Http\UploadedFile) {
                     $extension = $file->getClientOriginalExtension();
             
-                    $file_path = 'uploadedFiles/PublicMedia/';
-        
+                    $file_path = "uploadedFiles/Media/$id/";
+
                     if ($extension == 'heic' || $extension == 'HEIC') {
                         $filename = time() . '_' . rand(100, 999) . '.' . 'jpg';
                         Maestroerror\HeicToJpg::convert($file)->saveAs($file_path . $filename);
