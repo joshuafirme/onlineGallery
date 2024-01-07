@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\PublicMediaGallery;
+use Maestroerror;
 
 class PublicGalleryController extends Controller
 {
@@ -75,11 +76,6 @@ class PublicGalleryController extends Controller
             // If an exception occurs, return a JSON response with an error message and status code
             return response()->json(['success' => false, 'message' => 'File upload failed'], 500);
         }
-
-        // Redirect the user after a successful file upload
-        return redirect()
-            ->route('demoPublicGallery', [])
-            ->with('success', 'Data updated successfully');
     }
 
     public function processUploadImageSingle(Request $request)
@@ -102,8 +98,18 @@ class PublicGalleryController extends Controller
             $file = $request->file('media_path');
 
             $extension = $file->getClientOriginalExtension();
-            $filename = time() . '_' . rand(100, 999) . '.' . $extension;
-            $file->move(public_path('uploadedFiles/PublicMedia/'), $filename);
+            
+            $file_path = 'uploadedFiles/PublicMedia/';
+
+            if ($extension == 'heic' || $extension == 'HEIC') {
+                $filename = time() . '_' . rand(100, 999) . '.' . 'jpg';
+                Maestroerror\HeicToJpg::convert($file)->saveAs($file_path . $filename);
+            }
+            else {
+                $filename = time() . '_' . rand(100, 999) . '.' . $extension;
+                $file->move(public_path($file_path), $filename);
+            }
+
             $account->file_path = $filename;
         }
 
