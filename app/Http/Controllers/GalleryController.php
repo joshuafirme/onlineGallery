@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\AccountsPayments;
 use App\Models\Media;
 use Illuminate\Support\Facades\Validator;
+use Maestroerror;
 
 class GalleryController extends Controller
 {
@@ -199,8 +200,17 @@ class GalleryController extends Controller
             foreach ($files as $file) {
                 if ($file instanceof \Illuminate\Http\UploadedFile) {
                     $extension = $file->getClientOriginalExtension();
-                    $filename = time() . '_' . rand(100, 999) . '.' . $extension;
-                    $file->move(public_path('uploadedFiles/Media/' . $id), $filename);
+            
+                    $file_path = 'uploadedFiles/PublicMedia/';
+        
+                    if ($extension == 'heic' || $extension == 'HEIC') {
+                        $filename = time() . '_' . rand(100, 999) . '.' . 'jpg';
+                        Maestroerror\HeicToJpg::convert($file)->saveAs($file_path . $filename);
+                    }
+                    else {
+                        $filename = time() . '_' . rand(100, 999) . '.' . $extension;
+                        $file->move(public_path($file_path), $filename);
+                    }
                     $mediaPaths[] = $filename;
                 }
             }
