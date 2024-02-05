@@ -98,10 +98,13 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        @php
+                            echo $accounts->links('pagination::bootstrap-4');
+                        @endphp
                     </div>
                 </div>
             </div>
-          
+
         </div>
 
 

@@ -32,7 +32,7 @@
                     <h4 class="mb-4 congrats">{{ $uses->name }}</h4>
                     <p style="letter-spacing: 2px; font-size: 16px;">{{ $uses->description }}</p>
                     <a href="/products" class="nav-link mx-auto mt-2 mb-2" id="see-pricing">
-                        See pricing
+                        Create my Gallery Now!
                     </a>
                 </div>
                 <div class="row mt-5 mb-5">

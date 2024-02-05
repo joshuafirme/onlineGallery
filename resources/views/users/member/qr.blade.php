@@ -95,6 +95,9 @@
                 @endif
             </div>
         </div>
+        <div>
+            <a href="https://www.makeitmemories.net/">www.makeitmemories.net</a>
+        </div>
         <div class="notice">
             <span style="white-space: pre-line">please scan this qr code
                 share your memories with us!</span>
@@ -117,6 +120,9 @@
                     src="{{ asset('assets/images/icons/LOGO3.png') }}" class="white-logo" alt="logo">
                 {!! QrCode::size(250)->margin(3)->eye('circle')->generate(url('http://makeitmemories.net/public-gallery/events/' . $uuid . '/show')) !!}
             </div>
+        </div>
+        <div>
+            <a href="https://www.makeitmemories.net/">www.makeitmemories.net</a>
         </div>
         <div class="notice" style="max-width: 100%; word-wrap: break-word;">
             <span style="white-space: pre-line">{{ $accountsPayments['shareQR'] }}</span>

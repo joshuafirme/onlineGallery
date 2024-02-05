@@ -24,7 +24,7 @@ class DashboardController extends Controller
         $userId = auth()->user()->id;
         $user = User::find($userId);
 
-        $accounts = AccountsPayments::orderby('id', 'desc')->simplePaginate(10);
+        $accounts = AccountsPayments::orderby('id', 'desc')->paginate(10);
         $accountsCount = AccountsPayments::count();
         $totalSales = AccountsPayments::sum('amount');
 

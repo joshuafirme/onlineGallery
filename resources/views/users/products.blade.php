@@ -40,13 +40,9 @@
                     </div>
 
                     <div class="col-sm">
-                        <p style="padding: 20px; text-align: justify">Are you going to miss out on all the photos and videos
-                            your guests take of you on your wedding
-                            day?
-                            Allow all your friends and family to easily upload their amazing memories of your day to your
-                            personal online gallery. Recieve your unique QR code and link within 24hrs from placing an
-                            order,
-                            then simply print and display it at your wedding. </p>
+                        <p style="padding: 20px; text-align: justify">Supercharge your event with Make It Memories’ safe and secure, shareable, private galleries! Click
+                            below to purchase and instantly receive your QR code that guests simply scan and they’re taken
+                            directly to your dedicated online photo gallery. You’ll never need to track down photos ever again. </p>
 
                         <h6>Logo:</h6>
 

@@ -53,9 +53,9 @@
                         <h4 style="line-height: 2rem">Acquiring your own QR code and setting up a gallery for your special
                             event has never been easier!</h4>
 
-                        <p style="line-height: 2rem">Buy one of our QR codes today and within 24 hours, your unique link and
-                            QR code will be created and sent to you via email. Whether it's for your wedding, holiday, or
-                            any other occasion, you can simply use or print the code however you see fit. It's that simple!
+                        <p style="line-height: 2rem">Easily gather instant photos and videos from your guests via a convenient Make It Memories QR
+                            code. Because your guests will be snapping the wonderful moments they experience at your event,
+                            and you know you want those too!
                         </p>
 
                         <div class="row mt-4 mb-5">
