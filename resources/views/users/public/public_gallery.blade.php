@@ -1,7 +1,7 @@
 @extends('layouts.public-gallerybase')
 
 @section('title')
-    Website Title | Public-Gallery-Events-{{ $uuid }}
+    Public-Gallery-Events-{{ $uuid }}
 @endsection
 
 @section('content')

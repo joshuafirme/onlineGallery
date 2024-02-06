@@ -1,7 +1,7 @@
 @extends('layouts.adminbase')
 
 @section('title')
-    Website Title | Dashboard
+    Dashboard
 @endsection
 
 @section('content')

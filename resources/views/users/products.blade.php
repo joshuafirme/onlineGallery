@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('title')
-    Website Title | Products
+    Products | Products
 @endsection
 
 @section('content')
@@ -152,7 +152,7 @@
                 </div>
 
                 <div class="demo-button-container">
-                    <a href="/demo" class="demo-button">
+                    <a href="/demo/public-gallery" class="demo-button">
                         Try our DEMO <i class="bi bi-magic"></i>
                     </a>
                 </div>

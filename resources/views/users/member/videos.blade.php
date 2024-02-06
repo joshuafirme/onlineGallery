@@ -1,7 +1,7 @@
 @extends('layouts.gallerybase')
 
 @section('title')
-    Website Title | Your-Gallery-Videos {{ $uuid }}
+    Your-Gallery-Videos {{ $uuid }}
 @endsection
 
 @section('content')
