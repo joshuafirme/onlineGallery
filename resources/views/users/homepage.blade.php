@@ -39,11 +39,11 @@
                                     <div
                                         class="d-flex flex-wrap justify-content-center align-items-center text-center mt-5">
                                         <p class="mb-0" style="font-size: 12px;">Like & Visit Us At</p>
-                                        <a href=""><img src="{{ asset('assets/images/fbicon.png') }}" alt="Facebook"
+                                        <a href="{{ isset($social_link['facebook']) ? $social_link['facebook'] : '' }}"><img src="{{ asset('assets/images/fbicon.png') }}" alt="Facebook"
                                                 style="width: 35px; height: 35px;"></a>
-                                        <a href=""><img src="{{ asset('assets/images/instagramicon.png') }}"
+                                        <a href="{{ isset($social_link['instagram']) ? $social_link['instagram'] : '' }}"><img src="{{ asset('assets/images/instagramicon.png') }}"
                                                 alt="Instagram" style="width: 35px; height: 35px;"></a>
-                                        <a href=""><img src="{{ asset('assets/images/tiktokicon.png') }}"
+                                        <a href="{{ isset($social_link['tiktok']) ? $social_link['tiktok'] : '' }}"><img src="{{ asset('assets/images/tiktokicon.png') }}"
                                                 alt="TikTok" style="width: 35px; height: 35px;"></a>
                                     </div>
                                 </div>

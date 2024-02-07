@@ -40,7 +40,19 @@ class HomepageController extends Controller
         $path = "content/web_content.json";
         $why_choose_us = Utils::readStorage($path, 'why_choose_us');
 
-        return view('/users/homepage', compact('sliders', 'cards', 'testimonials', 'why_choose_us', 'affiliate'));
+        $file = "content/web_content.json";
+        $type = "social_links";
+
+        $social_link = null;
+
+        if (Storage::disk('public')->exists($file)) {
+            $social_link = json_decode(Storage::disk('public')->get($file), true);
+            if (isset($social_link[$type])) {
+                $social_link = $social_link[$type];
+            }
+        }
+
+        return view('/users/homepage', compact('sliders', 'cards', 'testimonials', 'why_choose_us', 'affiliate', 'social_link'));
     }
 
     public function uses($slug)

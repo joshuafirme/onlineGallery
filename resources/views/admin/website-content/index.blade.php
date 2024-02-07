@@ -30,6 +30,22 @@
                                         <span class="input-group-text" id="basic-addon2">%</span>
                                     </div>
                                 </div>
+                            @elseif (request()->type == 'social_links')
+                                <div class="col-4 mb-3">
+                                    <label class="form-label">Facebook</label>
+                                    <input type="text" class="form-control" name="facebook"
+                                        value="{{ isset($data['facebook']) ? $data['facebook'] : '' }}">
+                                </div>
+                                <div class="col-4 mb-3">
+                                    <label class="form-label">Instagram</label>
+                                    <input type="text" class="form-control" name="instagram"
+                                        value="{{ isset($data['instagram']) ? $data['instagram'] : '' }}">
+                                </div>
+                                <div class="col-4 mb-3">
+                                    <label class="form-label">Tiktok</label>
+                                    <input type="text" class="form-control" name="tiktok"
+                                        value="{{ isset($data['tiktok']) ? $data['tiktok'] : '' }}">
+                                </div>
                             @else
                                 <div class="col-12 mb-3">
                                     <textarea id="editor" name="content"> {!! $data !!}  </textarea>

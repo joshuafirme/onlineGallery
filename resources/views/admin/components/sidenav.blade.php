@@ -184,6 +184,13 @@
                                 </a>
                             </li>
                         @endif
+                        @if (in_array('social_links', $permissions))
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="{{ url('/website-content?type=social_links') }}">
+                                    Social Links
+                                </a>
+                            </li>
+                        @endif
                         <li class="sidebar-header" style="margin-left: 7px;">
                             Home page contents
                         </li>

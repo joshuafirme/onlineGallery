@@ -46,7 +46,16 @@ class WebsiteContentController extends Controller
             $data = json_decode(Storage::disk('public')->get($file), true);
         }
 
-        $data[$type] = request()->content;
+        if ($type == 'social_links') {
+            $data[$type] = [
+                'facebook' => request()->facebook,
+                'instagram' => request()->instagram,
+                'tiktok' => request()->tiktok,
+            ];
+        }
+        else {
+            $data[$type] = request()->content;
+        }
 
         Storage::disk('public')->put($file, json_encode($data));
 

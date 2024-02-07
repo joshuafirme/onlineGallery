@@ -287,6 +287,21 @@
                             </div>
                         </div>
                     </div>
+                    <div>
+                        <div class="row">
+                            <div class="col-8 pt-1">
+                                <div class="custom-control">
+                                    <label>Social Links</label>
+                                </div>
+                            </div>
+                            <div class="col-4 pt-1">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" name="permissions[]" id="chkbx-social_links"
+                                        value="social_links" class="parent-identy-maintenance">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="mt-2"><strong>Home page contents</strong></div>
                     <div>
                         <div class="row">
