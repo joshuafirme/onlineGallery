@@ -16,7 +16,7 @@
             <div class="carousel-inner">
                 @foreach ($sliders as $key => $slider)
                     <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                        <div class="headerContainer" style="background: url({{ asset($slider->left_image) }}); background-repeat: no-repeat; background-size: auto;">
+                        <div class="headerContainer" style="background: url({{ asset($slider->left_image) }}); background-repeat: no-repeat; background-size: cover;">
                             {{-- <div id="left-side">
                                 <img src="{{ asset($slider->left_image) }}" class="left-image">
                             </div> --}}
