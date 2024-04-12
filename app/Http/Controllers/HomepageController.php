@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helper\Utils;
 use App\Models\Affiliate;
+use App\Models\HowItWork;
 use App\Models\Uses;
 use App\Models\UsesSlider;
 use Illuminate\Http\Request;
@@ -79,8 +80,9 @@ class HomepageController extends Controller
     {
         $path = "content/web_content.json";
         $how_it_works = Utils::readStorage($path, 'how_it_works');
+        $steps = HowItWork::all();
 
-        return view('/users/howitworks', compact('how_it_works'));
+        return view('/users/howitworks', compact('how_it_works', 'steps'));
     }
 
     public function storeMessage(Request $request)

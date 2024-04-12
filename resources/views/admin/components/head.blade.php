@@ -24,6 +24,7 @@
     <!-- Remove this after purchasing -->
     <link class="js-stylesheet" href="{{ asset('libs/css/light.css?v=1.0') }}" rel="stylesheet">
     <script src="{{ asset('libs/js/sweetalert2.min.js') }}"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <!-- END SETTINGS -->
 </head>
 

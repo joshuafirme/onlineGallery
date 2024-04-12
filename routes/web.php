@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\UserRoleController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\UsesController;
 use App\Http\Controllers\Admin\WebsiteContentController;
+use App\Http\Controllers\Admin\HowItWorksController;
 use App\Http\Controllers\AffilateController;
 use Illuminate\Support\Facades\Route;
 
@@ -77,6 +78,11 @@ Route::middleware('auth')->group(function () {
         Route::post('/uses-sliders/store', 'storeSlider');
         Route::post('/uses-sliders/update/{id}', 'updateSlider');
         Route::delete('/uses-sliders/{id}', 'deleteSlider');
+    });
+
+    Route::controller(HowItWorksController::class)->group(function () {
+        Route::resource('/how-it-works', HowItWorksController::class);
+        Route::post('/how-it-works/update/{id}', 'update');
     });
 
     Route::controller(AffiliateDashboardController::class)->group(function () {

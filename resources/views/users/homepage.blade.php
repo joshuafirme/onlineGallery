@@ -8,20 +8,18 @@
     <header id="header">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
+                @foreach ($sliders as $key => $slider)
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $key }}" class="{{ $key==0 ? 'active' : '' }}"
+                    aria-current="true" aria-label="Slide {{ $key }}"></button> 
+                @endforeach
             </div>
             <div class="carousel-inner">
                 @foreach ($sliders as $key => $slider)
                     <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                        <div class="headerContainer">
-                            <div id="left-side">
+                        <div class="headerContainer" style="background: url({{ asset($slider->left_image) }}); background-repeat: no-repeat; background-size: auto;">
+                            {{-- <div id="left-side">
                                 <img src="{{ asset($slider->left_image) }}" class="left-image">
-                            </div>
+                            </div> --}}
                             <div class="text-center mx-auto my-5" style="flex: 2;">
                                 <!-- Adjusted the width using 'flex: 2;' -->
                                 <h2 class="text-body-emphasis mt-5" style="color: rgb(158, 37, 0) !important;">
@@ -38,7 +36,6 @@
                                     </a>
                                     <div
                                         class="d-flex flex-wrap justify-content-center align-items-center text-center mt-5">
-                                        <p class="mb-0" style="font-size: 12px;">Like & Visit Us At</p>
                                         <a href="{{ isset($social_link['facebook']) ? $social_link['facebook'] : '' }}"><img src="{{ asset('assets/images/fbicon.png') }}" alt="Facebook"
                                                 style="width: 35px; height: 35px;"></a>
                                         <a href="{{ isset($social_link['instagram']) ? $social_link['instagram'] : '' }}"><img src="{{ asset('assets/images/instagramicon.png') }}"
@@ -48,10 +45,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="right-side">
+                            {{-- <div id="right-side">
                                 <img src="{{ asset($slider->right_image) }}" class="right-image">
                                 <img src="{{ asset('assets/images/LowOpacityLogoBGeffect.png') }}" class="background-image">
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 @endforeach
@@ -102,7 +99,7 @@
                     
                 </div>
                 <div class="row mt-5 text-center" style="font-family: 'Montserrat';">
-                    <h1 style="font-weight: 500">Why Choose Us</h1>
+                    <h1 style="font-weight: 500">Our Commitment</h1>
                     <p
                         style="text-align: justify; margin-top: 20px; padding-left: 110px; padding-right: 110px; font-size: 17px;">
                         {!! $why_choose_us !!}

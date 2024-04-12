@@ -31,8 +31,8 @@
                 <div class="row mt-3 mb-3 text-center" style="padding-left: 100px; padding-right: 100px;">
                     <h4 class="mb-4 congrats">{{ $uses->name }}</h4>
                     <p style="letter-spacing: 2px; font-size: 16px;">{{ $uses->description }}</p>
-                    <a href="/products" class="nav-link mx-auto mt-2 mb-2" id="see-pricing">
-                        Create my Gallery Now!
+                    <a href="/products" class="nav-link m-auto mx-auto mt-2 mb-2" id="see-pricing">
+                        CREATE MY GALLERY NOW!
                     </a>
                 </div>
                 <div class="row mt-5 mb-5">

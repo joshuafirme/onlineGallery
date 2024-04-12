@@ -88,7 +88,7 @@
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Uses <i class="bi bi-chevron-compact-right" style="font-size: 11px;"></i>
+                            Memories <i class="bi bi-chevron-compact-right" style="font-size: 11px;"></i>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown"
                             style="letter-spacing: 2px; text-transform: uppercase;">
@@ -123,6 +123,7 @@
                         </div>
                     </li>
                     <li class="nav-item"><a href="/howItWorks" class="nav-link">How it Works</a></li>
+                    <li class="nav-item"><a href="/products" class="nav-link">Pricing</a></li>
                     <li class="nav-item"><a href="/affiliate" class="nav-link">Affiliate</a></li>
                     {{-- <li class="nav-item"><a href="/reachUs" class="nav-link">Reach Us</a></li> --}}
                     <li class="nav-item"><a href="/products" class="nav-link"

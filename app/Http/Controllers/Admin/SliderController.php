@@ -29,8 +29,12 @@ class SliderController extends Controller
     {
         $data = $request->all();
         
-        $data['left_image'] = Utils::uploadFile($request->left_image, 'img/slider/');
-        $data['right_image'] = Utils::uploadFile($request->right_image, 'img/slider/');
+        if ($request->left_image) {
+            $data['left_image'] = Utils::uploadFile($request->left_image, 'img/slider/');
+        }
+        if ($request->right_image) {
+            $data['right_image'] = Utils::uploadFile($request->right_image, 'img/slider/');
+        }
 
         Slider::create($data);
 

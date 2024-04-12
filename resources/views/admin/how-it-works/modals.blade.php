@@ -1,37 +1,29 @@
 <div class="modal fade" id="updateModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
     <div class="modal-dialog modal-lg">
-        <form class="modal-content" action="{{ route('sliders.store') }}" method="POST" class="row" autocomplete="off" enctype="multipart/form-data">
+        <form class="modal-content" action="{{ route('how-it-works.store') }}" method="POST" class="row" autocomplete="off" enctype="multipart/form-data">
             @csrf
             <div class="modal-header">
-                <h5 class="modal-title">Update slider</h5>
+                <h5 class="modal-title">Update</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body row">
+                
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Step name</label>
+                    <input type="text" class="form-control" name="name" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Icon Class (Icons list <a target="_blank" href="https://icons.getbootstrap.com/">here</a>)</label>
+                    <input type="text" class="form-control" name="icon_class" required>
+                </div>
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Title</label>
                     <input type="text" class="form-control" name="title" required>
                 </div>
-                <div class="col-md-6 mb-3">
+                <div class="col-md-12 mb-3">
                     <label class="form-label">Description</label>
                     <textarea name="description" class="form-control" rows="3"></textarea>
                 </div>
-
-                <div class="col-md-6 mb-3">
-                    <label for="formFile" class="form-label">Image</label>
-                    <input class="form-control file-upload" type="file" name="left_image">
-                    <div class="mt-3">Preview</div>
-                    <div class="overflow-auto img-container mt-2">
-                        <img width="100%" class="img-preview" id="left_image" style="max-height: 200px;" />
-                    </div>
-                </div>
-                {{-- <div class="col-md-6 mb-3">
-                    <label for="formFile" class="form-label">Right Image</label>
-                    <input class="form-control file-upload" type="file" name="right_image">
-                    <div class="mt-3">Preview</div>
-                    <div class="overflow-auto img-container mt-2">
-                        <img width="100%" class="img-preview" id="right_image" style="max-height: 200px;" />
-                    </div>
-                </div> --}}
 
             </div>
             <div class="modal-footer">

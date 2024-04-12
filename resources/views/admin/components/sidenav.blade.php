@@ -172,7 +172,7 @@
                         @endif
                         @if (in_array('how_it_works', $permissions))
                             <li class="sidebar-item">
-                                <a class="sidebar-link" href="{{ url('/website-content?type=how_it_works') }}">
+                                <a class="sidebar-link" href="{{ url('/how-it-works') }}">
                                     How it Works
                                 </a>
                             </li>
