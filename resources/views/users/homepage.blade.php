@@ -16,7 +16,7 @@
             <div class="carousel-inner">
                 @foreach ($sliders as $key => $slider)
                     <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                        <div class="headerContainer" style="background: url({{ asset($slider->left_image) }}); background-repeat: no-repeat; background-size: cover;">
+                        <div class="headerContainer" style="background-image: url('{{ asset($slider->left_image) }}'); background-size: cover; background-repeat: no-repeat; background-position: center center;">
                             {{-- <div id="left-side">
                                 <img src="{{ asset($slider->left_image) }}" class="left-image">
                             </div> --}}
@@ -32,7 +32,7 @@
                                     </div>
                                     <a href="/products" class="btn btn-lg px-4"
                                         style="border-radius: 12px; background: rgb(241, 235, 210); color: rgb(158, 37, 0); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-                                        Create Your First Gallery
+                                        Create my Gallery Now!
                                     </a>
                                     <div
                                         class="d-flex flex-wrap justify-content-center align-items-center text-center mt-5">
