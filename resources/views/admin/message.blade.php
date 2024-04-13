@@ -35,7 +35,7 @@
                                         @foreach ($message as $messages)
                                             <tr>
                                                 <td>{{ $messages->id }}</td>
-                                                <td>{{ $messages->message }}</td>
+                                                <td class="wrap">{{ $messages->message }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($messages->created_at)->format('F j, Y') }}
                                                 </td>
                                             </tr>
