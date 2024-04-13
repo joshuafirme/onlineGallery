@@ -103,7 +103,7 @@ class AdminController extends Controller
             $user = User::find($userId);
         }
 
-        $message = Message::orderby('id', 'desc')->simplePaginate(20);
+        $message = Message::orderby('id', 'desc')->paginate(20);
 
         return view('/admin/message', [
             'user' => $user,
