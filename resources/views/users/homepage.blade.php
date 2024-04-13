@@ -27,8 +27,8 @@
                                 </h2>
                                 <div class="col-lg-6 mx-auto">
                                     <div>
-                                        <label class="lead mt-5"
-                                            style=" font-size: 15px;">{{ $slider->description }}</label>
+                                        <label class="mt-5"
+                                            style=" font-size: 15px;"><b>{{ $slider->description }}</b></label>
                                     </div>
                                     <a href="/products" class="btn btn-lg px-4"
                                         style="border-radius: 12px; background: rgb(241, 235, 210); color: rgb(158, 37, 0); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
